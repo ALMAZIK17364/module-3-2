@@ -1,4 +1,8 @@
-def send_email(recipient, mail="Пустое сообщение", sender="myair.airlines@gmail.com"):
+def send_email(mail, recipient, sender="university.help@gmail.com"):
+    if mail == None:
+        mail = "Пустое сообщение"
+    if recipient == sender:
+        return "Нельзя отправить письмо самому себе!"
 
     if "@" not in recipient:
         return "Не верный формат почты получателя"
@@ -14,14 +18,25 @@ def send_email(recipient, mail="Пустое сообщение", sender="myair.
 
     if len(sender_mail_sections) > 3 or len(sender_mail_sections) < 2 or sender_mail_sections[-1] not in ["com", "ru", "net"]:
         return "Не верный формат почты отправителя"
+    if sender == "university.help@gmail.com":
+        print("Письмо отправлено с адреса:", sender, "\nа адрес:",
+            recipient, "\nПисьмо:\n",
+            "///////////////////////////////////////////\n",
+            mail,
+            "\n///////////////////////////////////////////")
+        return "Письмо успешно отправлено!"
+    else:
+        print("///НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ///\nПисьмо отправлено с адреса:", sender, "\nа адрес:",
+              recipient, "\nПисьмо:\n",
+              "///////////////////////////////////////////\n",
+              mail,
+              "\n///////////////////////////////////////////")
+        return "Письмо успешно отправлено!"
 
-    print("От:", sender, "\nДля:",
-          recipient, "\nПисьмо:\n",
-          "///////////////////////////////////////////\n",
-          mail,
-          "\n///////////////////////////////////////////")
-    return "Письмо успешно отправлено!"
 
 
-result = send_email("genius.888@gmail.com", mail="Привет!")
+result = send_email('Это сообщение для проверки связи', 'vasyok1337@gmail.com')
 print(result)
+send_email('Вы видите это сообщение как лучший студент курса!', 'urban.fan@mail.ru', sender='urban.info@gmail.com')
+send_email('Пожалуйста, исправьте задание', 'urban.student@mail.ru', sender='urban.teacher@mail.uk')
+send_email('Напоминаю самому себе о вебинар
